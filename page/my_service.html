@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" href="../style/style.css">
+<title>我的服务-一线服务评价系统</title>
+</head>
+<body id="bd_yixian_service">
+<div id="wrapper">
+	<header id="header" class="dark">
+		<a class="btn back" href="javascript:history.back();"><i></i><em>返回</em></a>
+		<h1>我的服务</h1>
+		<div class="select-box">
+			<select>
+				<option>2018年</option>
+				<option>2017年</option>
+				<option>2016年</option>
+			</select>
+		</div>
+	</header>
+    <div class="search-box hasBG">
+		<input type="text" class="com-input keyword" placeholder="点此输入客户手机">
+        <button type="button" class="btn search"><i></i><em>搜索</em></button>
+	</div>
+	<div class="tb-hd has-aw">
+		<span class="tb-td num">日期</span>
+        <span class="tb-td phone">客户</span>
+		<span class="tb-td score">评分</span>
+	</div>
+    <div id="main" class="yixian_service">
+    	<ul class="tb-list">
+        	<li class="has-aw">
+				
+                <em class="tb-td num">201807</em>
+                <em class="tb-td phone">13812341234</em>
+				<em class="tb-td score">100</em>
+				
+            </li>
+			<li class="has-aw">
+				
+                <em class="tb-td num">201807</em>
+                <em class="tb-td phone">13812341234</em>
+				<em class="tb-td score">100</em>
+				
+            </li>
+			<li class="has-aw">
+				
+                <em class="tb-td num">201807</em>
+                <em class="tb-td phone">13812341234</em>
+				<em class="tb-td score">100</em>
+				
+            </li>
+			<li class="has-aw">
+				
+                <em class="tb-td num">201807</em>
+                <em class="tb-td phone">13812341234</em>
+				<em class="tb-td score">100</em>
+				
+            </li>
+			<li class="has-aw">
+				
+                <em class="tb-td num">201807</em>
+                <em class="tb-td phone">13812341234</em>
+				<em class="tb-td score">100</em>
+				
+            </li>
+        </ul>
+    </div>
+    
+</div>
+<div class="pop detail mask">
+	<div class="box">
+    	<header>
+        	<h3><em>服务详情</em></h3>
+            <button type="button" class="btn close">×</button>
+        </header>
+        <div class="body">
+        	<ul class="list">
+				<li><label>日期</label><em>201807</em></li>
+				<li><label>客户</label><em>13812341234</em></li>
+				<li><label>评分</label><em>100</em></li>
+				<li><label>单价</label><em>￥20</em></li>
+				<li><label>区县</label><em>浔阳区</em></li>
+			</ul>     
+        </div>
+    </div>
+</div>
+<script src="../js/jquery.min.js"></script>
+<script>
+$(".tb-list>li").on("click",function(e){
+	$(".pop.detail").slideDown(200);
+	e.stopPropagation(); 
+});
+$(".pop .btn.close").on("click",function(){
+	closePop();
+});
+$(document).click(function(e){
+	var _con = $('.pop>.box');   
+	if(!_con.is(e.target) && _con.has(e.target).length===0){ 
+		closePop();
+	}
+	e.stopPropagation(); 
+});
+function closePop(){$(".pop").slideUp(200);}
+</script>
+</body>
+</html>

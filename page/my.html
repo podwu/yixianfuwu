@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="initial-scale=1.0,maximum-scale=1,user-scalable=no">
+<link rel="stylesheet" href="../style/style.css">
+<title>个人中心-一线服务评价系统</title>
+</head>
+<body id="bd_yixian_my">
+<style>
+.yixian_my>.count-box {border-bottom:1px solid #ddd;margin-bottom:8px;}
+/*nav-box:0*/
+.nav-box {position:relative;}
+.nav-box>.main>li {
+	position:relative;
+	border-bottom:1px solid #eee;
+}
+.nav-box>.main>li:last-child {border:none;}
+.nav-box>.main {
+	background-color:#fff;
+	padding:8px 16px 8px;
+	border-top:1px solid #ddd;
+	border-bottom:1px solid #ddd;
+}
+.nav-box>.main>li>a {
+	display:block;
+	height:42x;line-height:42px;
+	font-size:0;
+}
+.nav-box>.main>li>a::after {
+	content:"";
+	position:absolute;top:50%;right:6px;
+	font-size:0;
+	border-top:1px solid #bbb;border-left:1px solid #bbb;
+	width:7px;height:7px;
+	margin-top:-4px;
+	-webkit-transform:rotate(135deg);
+	transform:rotate(135deg);
+}
+.nav-box>.main>li>a>em {font-size:14px;}
+.nav-box .ico {
+	width:24px;height:24px;
+	background:url(../style/img/nav_icos.png) 0 0 no-repeat;
+	background-size:24px;
+}
+.nav-box .ico.xingji {background-position-y:-24px;}
+.nav-box .ico.quxiao {background-position-y:-48px;}
+.nav-box>.action {padding:16px;}
+/*nav-box:1*/
+</style>
+<div id="wrapper">
+    <div id="main" class="yixian_my">
+    	<header class="header-box">
+            <div class="user-box">
+                <div class="img face">
+                    <img src="../image/face_120.jpg">
+                </div>
+                <dl class="info">
+                    <dt>张某某</dt>
+                </dl>
+            </div>
+        </header>
+        <ul class="count-box">
+            <li>
+            	<em>4</em>
+                <label>当月星级</label>
+            </li>
+            <li>
+            	<em>500</em>
+                <label>当月收入</label>
+            </li>
+        </ul>
+        <nav class="nav-box">
+            <ul class="main">
+                <li>
+                    <a href="my_service.html">
+                        <i class="ico fuwu"></i>
+                        <em>我的服务</em> 
+                    </a>
+                </li>
+                <li>
+                    <a href="my_rate.html">
+                        <i class="ico xingji"></i>
+                        <em>我的星级</em> 
+                    </a>
+                </li>
+                <li>
+                    <a href="###">
+                        <i class="ico quxiao"></i>
+                        <em>取消绑定</em> 
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+</body>
+</html>
