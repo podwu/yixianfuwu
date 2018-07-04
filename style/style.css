@@ -218,6 +218,7 @@ textarea.com-input {height:120px;padding:16px;}
 	padding:0 10px;	
 }
 .btn.code>em {font-size:12px;}
+.frm-box.err .frm-title {color:#f90000;}
 /*frm-box:1*/
 /*Action-Bar:0*/
 .action-bar {

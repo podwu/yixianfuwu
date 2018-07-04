@@ -12,43 +12,99 @@
 		<h1>用户绑定</h1>
 	</header>
     <div id="main" class="yixian_binding">
-        <div class="tab-main">
-        	<div class="tab-item active">
-                <form>
-                <div class="frm-boxs wide">
-                    <div class="frm-box">
-                        <div class="frm-box-hd">
-                            <label class="frm-title">手机号码</label>
-                        </div>
-                        <div class="frm-box-bd">
-                            <input type="text" class="com-input" placeholder="输入手机号码" /> 
-                        </div>
-                    </div>   
-                    <div class="frm-box">
-                        <div class="frm-box-hd">
-                            <label class="frm-title">短信验证码</label>
-                        </div>
-                        <div class="frm-box-bd">
-                            <input type="text" class="com-input" placeholder="输入短信验证码" />
-                        </div>
-                        <a class="btn code"><em>获取验证码</em></a>
-                    </div> 
-                </div> 
-                <div class="frm-action">
-                    <button type="button" class="btn submit"><em>确认绑定</em></button>
-                </div>
-                </form>      
-            </div>
-        </div>     
-    </div>
+		<form>
+			<div class="frm-boxs wide">
+				<div class="frm-box">
+					<div class="frm-box-hd">
+						<label class="frm-title">手机号码</label>
+					</div>
+					<div class="frm-box-bd">
+						<input type="text" class="com-input phone" placeholder="输入手机号码" />
+					</div>
+				</div>
+				<div class="frm-box">
+					<div class="frm-box-hd">
+						<label class="frm-title">短信验证码</label>
+					</div>
+					<div class="frm-box-bd">
+						<input type="text" class="com-input smscode" placeholder="输入短信验证码" />
+					</div>
+					<a class="btn code"><em>获取验证码</em></a> 
+				</div>
+			</div>
+			<div class="frm-action">
+				<button type="button" class="btn submit"><em>确认绑定</em></button>
+			</div>
+		</form>
+	</div>
 </div>
 <script src="../js/jquery.min.js"></script>
 <script>
-//表单提交测试
+//表单提交判断
+var phoneRule=/^1[3-8]\d{9}$/,
+	codeRule=/^\d{6}$/;
 $(".btn.submit").on("click",function(){
-	showTip("测试！","toast");
+	if(($("input.phone").val()=="")||(!phoneRule.test($("input.phone").val()))){
+		$("input.phone").parents(".frm-box").addClass("err");
+		$("input.phone").on("keyup",function(){	
+			if(phoneRule.test($("input.phone").val())){
+				$("input.phone").parents(".frm-box").removeClass("err");
+			}else {
+				$("input.phone").parents(".frm-box").addClass("err");
+			}
+		});
+		showTip("输入正确的手机号码！","toast");
+		$("input.phone").focus();
+		return false;	
+	}else if(($("input.smscode").val()=="")||(!codeRule.test(($("input.smscode").val())))){
+		$("input.smscode").parents(".frm-box").addClass("err");		
+		$("input.smscode").on("keyup",function(){
+			if(codeRule.test($("input.smscode").val())){
+				$("input.smscode").parents(".frm-box").removeClass("err");
+			}else {
+				$("input.smscode").parents(".frm-box").addClass("err");
+			}
+		});		
+		showTip("输入正确的短信验证码！","toast");
+		$("input.smscode").focus();
+		return false;
+	}
+	alert("测试通过!");
 });
 
+//发送短信验证码
+$(".btn.code").on("click",function(){		
+	var valPhone=$("input.phone").val();
+	if((valPhone=="")||(!phoneRule.test($("input.phone").val()))){	
+		$("input.phone").parents(".frm-box").addClass("err");				
+		$("input.phone").on("keyup",function(){
+			if(phoneRule.test($("input.phone").val())){
+				$("input.phone").parents(".frm-box").removeClass("err");
+			}
+		});
+		showTip("输入正确的手机号码！","toast");
+		return false;
+	}else{
+		sysSecond=30; 
+		$(this).addClass("count-down");
+		InterValObj=window.setInterval(SetRemainTime,1000);
+		$("input.phone").attr("disabled",true);
+	}
+});
+//倒计时
+function SetRemainTime(){
+	if (sysSecond>0) {
+		sysSecond=sysSecond-1; 
+		$(".count-down>em").text(sysSecond+" 秒");
+	}else{
+		window.clearInterval(InterValObj);
+		$(".btn.code").removeClass("count-down");
+		$(".btn.code>em").text("获取验证码");
+		$("input.phone").attr("disabled",false);
+	}
+}
+	
+	
 //信息提示
 function showTip(tip,position,el,time){
 	if(!el){el=$("body");}
